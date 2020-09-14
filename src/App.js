@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Movie from "./Movie";
-import "./App.css";
+import "./sass/App.scss";
 
 function App() {
   const API_KEY = "pkHjVPMSv0I48ATgtjYQBaDyGJGIszNk";
