@@ -22,20 +22,16 @@ function App() {
 
   return (
     <div className="App">
-      <form className="search-form">
-        <input className="search-bar" type="text" />
-        <button className="search-button" type="submit">
-          Search
-        </button>
-      </form>
-      {reviews.map((review) => (
-        <Movie
-          key={review.display_title}
-          title={review.display_title}
-          description={review.summary_short}
-          image={review.multimedia.src}
-        />
-      ))}
+      <div className="movie-list">
+        {reviews.map((review) => (
+          <Movie
+            key={review.display_title}
+            title={review.display_title}
+            description={review.summary_short}
+            image={review.multimedia.src}
+          />
+        ))}
+      </div>
     </div>
   );
 }
