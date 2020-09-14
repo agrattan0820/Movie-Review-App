@@ -22,6 +22,9 @@ function App() {
 
   return (
     <div className="App">
+      <header>
+        <h1>NYT Critic's Picks</h1>
+      </header>
       <div className="movie-list">
         {reviews.map((review) => (
           <Movie
@@ -32,6 +35,7 @@ function App() {
           />
         ))}
       </div>
+      <footer></footer>
     </div>
   );
 }

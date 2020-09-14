@@ -1,12 +1,19 @@
 @import "./components/Movie";
 @import "./variables";
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
 
 .App {
   text-align: center;
+}
+
+header h1 {
+  font-family: "Lora", serif;
 }
 
 .movie-list {
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  width: 75%;
+  margin: auto;
 }
