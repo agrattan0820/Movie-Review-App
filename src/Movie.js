@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
 
-function Movie({ title, image }) {
+function Movie({ title, description, image }) {
   return (
     <div className="container">
       <h1>{title}</h1>
-      <p>Description</p>
-      <img src={image} alt="" />
+      <p>{description}</p>
+      <img src={image} alt={title} />
     </div>
   );
 }

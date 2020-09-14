@@ -29,7 +29,12 @@ function App() {
         </button>
       </form>
       {reviews.map((review) => (
-        <Movie title={review.display_title} image={review.multimedia.src} />
+        <Movie
+          key={review.display_title}
+          title={review.display_title}
+          description={review.summary_short}
+          image={review.multimedia.src}
+        />
       ))}
     </div>
   );
