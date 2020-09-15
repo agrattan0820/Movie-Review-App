@@ -6,17 +6,22 @@ function App() {
   const API_KEY = "pkHjVPMSv0I48ATgtjYQBaDyGJGIszNk";
 
   const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(15);
 
   useEffect(() => {
     getReviews();
   }, []);
 
   const getReviews = async () => {
+    setLoading(true);
     const response = await fetch(
       `https://api.nytimes.com/svc/movies/v2/reviews/picks.json?api-key=${API_KEY}`
     );
     const reviewData = await response.json();
     setReviews(reviewData.results);
+    setLoading(false);
     console.log(reviewData.results);
   };
 
