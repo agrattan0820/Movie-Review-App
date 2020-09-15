@@ -4,15 +4,11 @@ import "./sass/App.scss";
 
 function App() {
   const API_KEY = "pkHjVPMSv0I48ATgtjYQBaDyGJGIszNk";
-  const offsetNum = 0;
 
   const [reviews, setReviews] = useState([]);
+  const [offsetNum, setOffsetNum] = useState(0);
   const [morePages, setMorePages] = useState();
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    getReviews();
-  }, []);
 
   const getReviews = async () => {
     setLoading(true);
@@ -25,6 +21,22 @@ function App() {
     setLoading(false);
     console.log(reviewData);
   };
+
+  const nextPage = () => {
+    if (morePages) {
+      setOffsetNum(offsetNum + 20);
+    }
+  };
+
+  const prevPage = () => {
+    if (offsetNum != 0) {
+      setOffsetNum(offsetNum - 20);
+    }
+  };
+
+  useEffect(() => {
+    getReviews();
+  }, [offsetNum]);
 
   return (
     <div className="App">
@@ -46,8 +58,8 @@ function App() {
       )}
       <footer>
         <nav>
-          {offsetNum === 0 && <button>Previous Page</button>}
-          {morePages && <button> Next Page</button>}
+          <button onClick={prevPage}>Previous Page</button>
+          <button onClick={nextPage}>Next Page</button>
         </nav>
       </footer>
     </div>
