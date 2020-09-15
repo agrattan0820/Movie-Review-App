@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Movie from "./Movie";
+import FilmReel from "./images/film_reel.jpg";
 import "./sass/App.scss";
 
 function App() {
@@ -51,15 +52,25 @@ function App() {
               key={review.display_title}
               title={review.display_title}
               description={review.summary_short}
-              image={review.multimedia.src}
+              image={
+                review.multimedia === null ? FilmReel : review.multimedia.src
+              }
             />
           ))}
         </div>
       )}
       <footer>
         <nav>
-          <button onClick={prevPage}>Previous Page</button>
-          <button onClick={nextPage}>Next Page</button>
+          {offsetNum !== 0 && (
+            <button className="prev-page-btn" onClick={prevPage}>
+              Previous Page
+            </button>
+          )}
+          {morePages && (
+            <button className="next-page-btn" onClick={nextPage}>
+              Next Page
+            </button>
+          )}
         </nav>
       </footer>
     </div>

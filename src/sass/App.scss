@@ -17,3 +17,29 @@ header h1 {
   width: 75%;
   margin: auto;
 }
+
+.prev-page-btn {
+  border: none;
+  outline: none;
+  padding: 1rem;
+  margin: 1rem;
+  width: 150px;
+  border-radius: 15px;
+  color: whitesmoke;
+  background-color: black;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+}
+
+.next-page-btn {
+  border: none;
+  outline: none;
+  padding: 1rem;
+  margin: 1rem;
+  width: 150px;
+  border-radius: 15px;
+  color: whitesmoke;
+  background-color: black;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+}
