@@ -47,11 +47,19 @@ function App() {
       {loading && <h2>Loading...</h2>}
       {!loading && (
         <div className="movie-list">
-          {reviews.map((review) => (
+          {reviews.map((review, index) => (
             <Movie
-              key={review.display_title}
-              title={review.display_title}
-              description={review.summary_short}
+              key={index}
+              title={
+                review.display_title === null
+                  ? "No Title Found"
+                  : review.display_title
+              }
+              description={
+                review.summary_short === null
+                  ? "No Summary Found"
+                  : review.summary_short
+              }
               image={
                 review.multimedia === null ? FilmReel : review.multimedia.src
               }
