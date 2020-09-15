@@ -11,6 +11,23 @@ function App() {
   const [morePages, setMorePages] = useState();
   const [loading, setLoading] = useState(false);
 
+  const nextPage = () => {
+    if (morePages) {
+      setOffsetNum(offsetNum + 20);
+    }
+  };
+
+  const prevPage = () => {
+    if (offsetNum !== 0) {
+      setOffsetNum(offsetNum - 20);
+    }
+  };
+
+  useEffect(() => {
+    getReviews();
+    // eslint-disable-next-line
+  }, [offsetNum]);
+
   const getReviews = async () => {
     setLoading(true);
     const response = await fetch(
@@ -20,24 +37,7 @@ function App() {
     setReviews(reviewData.results);
     setMorePages(reviewData.has_more);
     setLoading(false);
-    console.log(reviewData);
   };
-
-  const nextPage = () => {
-    if (morePages) {
-      setOffsetNum(offsetNum + 20);
-    }
-  };
-
-  const prevPage = () => {
-    if (offsetNum != 0) {
-      setOffsetNum(offsetNum - 20);
-    }
-  };
-
-  useEffect(() => {
-    getReviews();
-  }, [offsetNum]);
 
   return (
     <div className="App">
