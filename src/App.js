@@ -37,12 +37,27 @@ function App() {
     setReviews(reviewData.results);
     setMorePages(reviewData.has_more);
     setLoading(false);
+    console.log(reviewData);
   };
 
   return (
     <div className="App">
       <header>
         <h1>NYT Critic's Picks</h1>
+        {!loading && (
+          <nav>
+            {offsetNum !== 0 && (
+              <button className="prev-page-btn" onClick={prevPage}>
+                Previous Page
+              </button>
+            )}
+            {morePages && (
+              <button className="next-page-btn" onClick={nextPage}>
+                Next Page
+              </button>
+            )}
+          </nav>
+        )}
       </header>
       {loading && <h2>Loading...</h2>}
       {!loading && (
@@ -50,6 +65,7 @@ function App() {
           {reviews.map((review, index) => (
             <Movie
               key={index}
+              link={review.link.url}
               title={
                 review.display_title === null
                   ? "No Title Found"
@@ -67,20 +83,22 @@ function App() {
           ))}
         </div>
       )}
-      <footer>
-        <nav>
-          {offsetNum !== 0 && (
-            <button className="prev-page-btn" onClick={prevPage}>
-              Previous Page
-            </button>
-          )}
-          {morePages && (
-            <button className="next-page-btn" onClick={nextPage}>
-              Next Page
-            </button>
-          )}
-        </nav>
-      </footer>
+      {!loading && (
+        <footer>
+          <nav>
+            {offsetNum !== 0 && (
+              <button className="prev-page-btn" onClick={prevPage}>
+                Previous Page
+              </button>
+            )}
+            {morePages && (
+              <button className="next-page-btn" onClick={nextPage}>
+                Next Page
+              </button>
+            )}
+          </nav>
+        </footer>
+      )}
     </div>
   );
 }
