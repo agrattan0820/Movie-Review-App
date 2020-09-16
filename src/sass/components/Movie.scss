@@ -28,6 +28,10 @@
 
 .movie-description {
   font-size: 0.8rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .movie-image {

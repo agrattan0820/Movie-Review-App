@@ -9,6 +9,8 @@ function App() {
   const [reviews, setReviews] = useState([]);
   const [offsetNum, setOffsetNum] = useState(0);
   const [morePages, setMorePages] = useState();
+  const [movieOrder, setMovieOrder] = useState("by-opening-date");
+
   const [loading, setLoading] = useState(false);
 
   const nextPage = () => {
@@ -23,15 +25,21 @@ function App() {
     }
   };
 
+  const changeMovieOrder = (e) => {
+    setMovieOrder(e.target.value);
+    setOffsetNum(0);
+    console.log(movieOrder);
+  };
+
   useEffect(() => {
     getReviews();
     // eslint-disable-next-line
-  }, [offsetNum]);
+  }, [offsetNum, movieOrder]);
 
   const getReviews = async () => {
     setLoading(true);
     const response = await fetch(
-      `https://api.nytimes.com/svc/movies/v2/reviews/picks.json?api-key=${API_KEY}&offset=${offsetNum}`
+      `https://api.nytimes.com/svc/movies/v2/reviews/picks.json?api-key=${API_KEY}&offset=${offsetNum}&order=${movieOrder}`
     );
     const reviewData = await response.json();
     setReviews(reviewData.results);
@@ -44,6 +52,11 @@ function App() {
     <div className="App">
       <header>
         <h1>NYT Critic's Picks</h1>
+        <select value={movieOrder} onChange={changeMovieOrder}>
+          <option value="by-opening-date">Opening Date</option>
+          <option value="by-publication-date">Publication Date</option>
+          <option value="by-title">Title</option>
+        </select>
         {!loading && (
           <nav>
             {offsetNum !== 0 && (
