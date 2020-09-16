@@ -7,30 +7,18 @@
 }
 
 header h1 {
-  font-family: "Lora", serif;
+  font-family: $titleFont;
 }
 
 .movie-list {
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  width: 75%;
+  width: 90%;
   margin: auto;
 }
 
-.prev-page-btn {
-  border: none;
-  outline: none;
-  padding: 1rem;
-  margin: 1rem;
-  width: 150px;
-  border-radius: 15px;
-  color: whitesmoke;
-  background-color: black;
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
-}
-
+.prev-page-btn,
 .next-page-btn {
   border: none;
   outline: none;
@@ -38,8 +26,8 @@ header h1 {
   margin: 1rem;
   width: 150px;
   border-radius: 15px;
-  color: whitesmoke;
-  background-color: black;
-  font-family: "Open Sans", sans-serif;
+  color: $btnFontColor;
+  background-color: $primaryBlack;
+  font-family: $bodyFont;
   font-weight: bold;
 }
