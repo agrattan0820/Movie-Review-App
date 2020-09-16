@@ -18,6 +18,13 @@ header {
 
   select {
     font-family: $bodyFont;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    border: none;
+    outline: none;
+    background: $tertiaryColor;
+    border-radius: 10px;
+    font-weight: bold;
   }
 }
 

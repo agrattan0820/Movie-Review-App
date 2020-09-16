@@ -51,11 +51,11 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>NYT Critic's Picks</h1>
+        <h1>The New York Times Critic's Picks</h1>
         <label for="sortBy">Sort By: </label>
         <select id="sortBy" value={movieOrder} onChange={changeMovieOrder}>
-          <option value="by-opening-date">Opening Date</option>
-          <option value="by-publication-date">Publication Date</option>
+          <option value="by-opening-date">Most Recent</option>
+          <option value="by-publication-date">Oldest</option>
           <option value="by-title">Title</option>
         </select>
         {!loading && (
