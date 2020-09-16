@@ -51,7 +51,12 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>The New York Times Critic's Picks</h1>
+        <h1>
+          The New York Times Critic's Picks{" "}
+          <span aria-label="movie camera" role="img">
+            &#127909;
+          </span>
+        </h1>
         <label for="sortBy">Sort By: </label>
         <select id="sortBy" value={movieOrder} onChange={changeMovieOrder}>
           <option value="by-opening-date">Most Recent</option>
