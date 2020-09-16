@@ -16,6 +16,9 @@ header h1 {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   width: 90%;
   margin: auto;
+  @media screen and (min-width: $tabletWidth) {
+    width: 75%;
+  }
 }
 
 .prev-page-btn,
