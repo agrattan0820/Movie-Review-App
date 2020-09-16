@@ -4,18 +4,31 @@
 
 .App {
   text-align: center;
+  font-family: $bodyFont;
 }
 
-header h1 {
-  font-family: $titleFont;
+header {
+  h1 {
+    font-family: $titleFont;
+    font-size: 2rem;
+    @media screen and (min-width: $tabletWidth) {
+      font-size: 2.5rem;
+    }
+  }
+
+  select {
+    font-family: $bodyFont;
+  }
 }
 
 .movie-list {
   display: grid;
+  place-items: center;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  width: 90%;
+  width: 80%;
   margin: auto;
+  text-align: center;
   @media screen and (min-width: $tabletWidth) {
     width: 75%;
   }
