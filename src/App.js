@@ -57,7 +57,7 @@ function App() {
             &#127909;
           </span>
         </h1>
-        <label for="sortBy">Sort By: </label>
+        <label htmlFor="sortBy">Sort By: </label>
         <select id="sortBy" value={movieOrder} onChange={changeMovieOrder}>
           <option value="by-opening-date">Most Recent</option>
           <option value="by-publication-date">Oldest</option>
@@ -67,12 +67,12 @@ function App() {
           <nav>
             {offsetNum !== 0 && (
               <button className="prev-page-btn" onClick={prevPage}>
-                Previous Page
+                <span role="img">&#10094;</span> Previous Page
               </button>
             )}
             {morePages && (
               <button className="next-page-btn" onClick={nextPage}>
-                Next Page
+                Next Page <span role="img">&#10095;</span>
               </button>
             )}
           </nav>
@@ -98,6 +98,9 @@ function App() {
               image={
                 review.multimedia === null ? FilmReel : review.multimedia.src
               }
+              year={review.publication_date.substring(0, 4)}
+              month={review.publication_date.substring(5, 7)}
+              day={review.publication_date.substring(8, 10)}
             />
           ))}
         </div>
@@ -107,12 +110,12 @@ function App() {
           <nav>
             {offsetNum !== 0 && (
               <button className="prev-page-btn" onClick={prevPage}>
-                Previous Page
+                <span role="img">&#10094;</span> Previous Page
               </button>
             )}
             {morePages && (
               <button className="next-page-btn" onClick={nextPage}>
-                Next Page
+                Next Page <span role="img">&#10095;</span>
               </button>
             )}
           </nav>
