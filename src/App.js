@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Movie from "./Movie";
-import FilmReel from "./images/film_reel.jpg";
+import FilmReel from "./images/film_reel-min.jpg";
 import "./sass/App.scss";
 
 function App() {
