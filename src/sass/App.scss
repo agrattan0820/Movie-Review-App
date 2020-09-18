@@ -8,6 +8,10 @@
 }
 
 header {
+  margin-bottom: 1rem;
+  @media screen and (min-width: $tabletWidth) {
+    margin-bottom: 2rem;
+  }
   h1 {
     font-family: $titleFont;
     font-size: 2rem;
