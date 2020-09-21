@@ -58,3 +58,29 @@ header {
   font-family: $bodyFont;
   font-weight: bold;
 }
+
+.sort-and-search-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 35%;
+  margin: auto;
+  input {
+    border-radius: 15px;
+    padding: 0.5rem;
+    outline: none;
+    border: 1px solid gainsboro;
+    font-family: $bodyFont;
+    margin: 0 1rem;
+  }
+  button {
+    font-family: $bodyFont;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    border: none;
+    outline: none;
+    background: $tertiaryColor;
+    border-radius: 10px;
+    font-weight: bold;
+  }
+}

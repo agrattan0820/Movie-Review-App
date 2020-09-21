@@ -10,7 +10,8 @@ function App() {
   const [offsetNum, setOffsetNum] = useState(0);
   const [morePages, setMorePages] = useState();
   const [movieOrder, setMovieOrder] = useState("by-opening-date");
-
+  const [search, setSearch] = useState("");
+  const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
 
   const nextPage = () => {
@@ -31,15 +32,24 @@ function App() {
     console.log(movieOrder);
   };
 
+  const updateSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const getSearch = (e) => {
+    e.preventDefault();
+    setQuery(search);
+  };
+
   useEffect(() => {
     getReviews();
     // eslint-disable-next-line
-  }, [offsetNum, movieOrder]);
+  }, [offsetNum, movieOrder, query]);
 
   const getReviews = async () => {
     setLoading(true);
     const response = await fetch(
-      `https://api.nytimes.com/svc/movies/v2/reviews/picks.json?api-key=${API_KEY}&offset=${offsetNum}&order=${movieOrder}`
+      `https://api.nytimes.com/svc/movies/v2/reviews/picks.json?api-key=${API_KEY}&offset=${offsetNum}&order=${movieOrder}&query=${query}`
     );
     const reviewData = await response.json();
     setReviews(reviewData.results);
@@ -52,33 +62,39 @@ function App() {
     <div className="App">
       <header>
         <h1>
-          The New York Times Critic's Picks{" "}
+          The New York Times Critic's Picks
           <span aria-label="movie camera" role="img">
             &#127909;
           </span>
         </h1>
-        <label htmlFor="sortBy">Sort By: </label>
-        <select id="sortBy" value={movieOrder} onChange={changeMovieOrder}>
-          <option value="by-opening-date">Most Recent</option>
-          <option value="by-publication-date">Oldest</option>
-          <option value="by-title">Title</option>
-        </select>
-        {!loading && (
-          <nav>
-            {offsetNum !== 0 && (
-              <button className="prev-page-btn" onClick={prevPage}>
-                <span role="img">&#10094;</span> Previous Page
-              </button>
-            )}
-            {morePages && (
-              <button className="next-page-btn" onClick={nextPage}>
-                Next Page <span role="img">&#10095;</span>
-              </button>
-            )}
-          </nav>
-        )}
+        <div className="search-container"></div>
+        <div className="sort-and-search-container">
+          <form onSubmit={getSearch}>
+            <input type="search" value={search} onChange={updateSearch} />
+            <button className="submit-search-btn">Search</button>
+          </form>
+          <div>
+            <label htmlFor="sortBy">Sort By: </label>
+            <select id="sortBy" value={movieOrder} onChange={changeMovieOrder}>
+              <option value="by-opening-date">Most Recent</option>
+              <option value="by-publication-date">Oldest</option>
+              <option value="by-title">Title</option>
+            </select>
+          </div>
+        </div>
+        <nav>
+          {offsetNum !== 0 && (
+            <button className="prev-page-btn" onClick={prevPage}>
+              <span role="img">&#10094;</span> Previous Page
+            </button>
+          )}
+          {morePages && (
+            <button className="next-page-btn" onClick={nextPage}>
+              Next Page <span role="img">&#10095;</span>
+            </button>
+          )}
+        </nav>
       </header>
-      {loading && <h2>Loading...</h2>}
       {!loading && (
         <div className="movie-list">
           {reviews.map((review, index) => (
