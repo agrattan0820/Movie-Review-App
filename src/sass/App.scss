@@ -29,6 +29,7 @@ header {
     background: $tertiaryColor;
     border-radius: 10px;
     font-weight: bold;
+    cursor: pointer;
   }
 }
 
@@ -57,6 +58,7 @@ header {
   background-color: $primaryBlack;
   font-family: $bodyFont;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .sort-and-search-container {
@@ -82,5 +84,6 @@ header {
     background: $tertiaryColor;
     border-radius: 10px;
     font-weight: bold;
+    cursor: pointer;
   }
 }
