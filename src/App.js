@@ -72,7 +72,9 @@ function App() {
         <div className="sort-and-search-container">
           <form onSubmit={getSearch}>
             <input type="search" value={search} onChange={updateSearch} />
-            <button className="submit-search-btn">Search</button>
+            <button>
+              <i className="fa fa-search"></i>
+            </button>
           </form>
           <div>
             <label htmlFor="sortBy">Sort By: </label>
@@ -98,6 +100,7 @@ function App() {
       </header>
       {!loading && (
         <div className="movie-list">
+          {reviews.length === 0 && <h2>No results</h2>}
           {reviews.map((review, index) => (
             <Movie
               key={index}
