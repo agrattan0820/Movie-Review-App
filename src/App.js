@@ -38,6 +38,7 @@ function App() {
 
   const getSearch = (e) => {
     e.preventDefault();
+    setOffsetNum(0);
     setQuery(search);
   };
 
