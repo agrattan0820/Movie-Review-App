@@ -71,7 +71,12 @@ function App() {
         <div className="search-container"></div>
         <div className="sort-and-search-container">
           <form onSubmit={getSearch}>
-            <input type="search" value={search} onChange={updateSearch} />
+            <input
+              type="search"
+              placeholder="Search"
+              value={search}
+              onChange={updateSearch}
+            />
             <button>
               <i className="fa fa-search"></i>
             </button>
