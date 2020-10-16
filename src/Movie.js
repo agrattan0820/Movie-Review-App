@@ -6,6 +6,7 @@ function Movie({ link, title, description, image, year, month, day }) {
   const movieAnimations = {
     hidden: { opacity: 0, y: 200 },
     visible: { opacity: 1, y: 0 },
+    tap: { scale: 0.9 },
   };
 
   return (
@@ -16,6 +17,7 @@ function Movie({ link, title, description, image, year, month, day }) {
       variants={movieAnimations}
       initial="hidden"
       animate="visible"
+      whileTap="tap"
     >
       <div className="movie-container">
         <h1 className="movie-title">{title}</h1>
