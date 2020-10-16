@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Movie from "./Movie";
 import FilmReel from "./images/film_reel-min.jpg";
 import "./sass/App.scss";
+import { motion } from "framer-motion";
 
 function App() {
   const API_KEY = "pkHjVPMSv0I48ATgtjYQBaDyGJGIszNk";
@@ -59,6 +60,11 @@ function App() {
     console.log(reviewData);
   };
 
+  const movieContainer = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
+  };
+
   return (
     <div className="App">
       <header>
@@ -92,19 +98,34 @@ function App() {
         </div>
         <nav>
           {offsetNum !== 0 && (
-            <button className="prev-page-btn" onClick={prevPage}>
+            <motion.button
+              className="prev-page-btn"
+              onClick={prevPage}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
               <span role="img">&#10094;</span> Previous Page
-            </button>
+            </motion.button>
           )}
           {morePages && (
-            <button className="next-page-btn" onClick={nextPage}>
+            <motion.button
+              className="next-page-btn"
+              onClick={nextPage}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
               Next Page <span role="img">&#10095;</span>
-            </button>
+            </motion.button>
           )}
         </nav>
       </header>
       {!loading && (
-        <div className="movie-list">
+        <motion.div
+          className="movie-list"
+          variants={movieContainer}
+          initial="hidden"
+          animate="visible"
+        >
           {reviews.length === 0 && <h2>No results</h2>}
           {reviews.map((review, index) => (
             <Movie
@@ -128,20 +149,30 @@ function App() {
               day={review.publication_date.substring(8, 10)}
             />
           ))}
-        </div>
+        </motion.div>
       )}
       {!loading && (
         <footer>
           <nav>
             {offsetNum !== 0 && (
-              <button className="prev-page-btn" onClick={prevPage}>
+              <motion.button
+                className="prev-page-btn"
+                onClick={prevPage}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
                 <span role="img">&#10094;</span> Previous Page
-              </button>
+              </motion.button>
             )}
             {morePages && (
-              <button className="next-page-btn" onClick={nextPage}>
+              <motion.button
+                className="next-page-btn"
+                onClick={nextPage}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
                 Next Page <span role="img">&#10095;</span>
-              </button>
+              </motion.button>
             )}
           </nav>
         </footer>
