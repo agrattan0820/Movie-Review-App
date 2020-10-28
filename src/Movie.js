@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./sass/App.scss";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 function Movie({ link, title, description, image, year, month, day }) {
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
   const movieAnimations = {
     hidden: { opacity: 0, y: 200 },
     visible: { opacity: 1, y: 0 },
     tap: { scale: 0.9 },
   };
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
 
   return (
     <motion.a
@@ -15,8 +24,9 @@ function Movie({ link, title, description, image, year, month, day }) {
       target="_blank"
       rel="noopener noreferrer"
       variants={movieAnimations}
+      ref={ref}
       initial="hidden"
-      animate="visible"
+      animate={controls}
       whileTap="tap"
     >
       <div className="movie-container">

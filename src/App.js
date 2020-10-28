@@ -60,11 +60,6 @@ function App() {
     console.log(reviewData);
   };
 
-  const movieContainer = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
-  };
-
   return (
     <div className="App">
       <header>
@@ -120,12 +115,7 @@ function App() {
         </nav>
       </header>
       {!loading && (
-        <motion.div
-          className="movie-list"
-          variants={movieContainer}
-          initial="hidden"
-          animate="visible"
-        >
+        <motion.div className="movie-list">
           {reviews.length === 0 && <h2>No results</h2>}
           {reviews.map((review, index) => (
             <Movie
